@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "goalAdventure",
+    "slug": "goalAdventure",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "goalAdventure"
+}
