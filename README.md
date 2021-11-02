@@ -11,7 +11,7 @@ Make sure to download the Expo app on your IOS or Android device through the App
 On your device you should install the Expo-cli on your computer.
 ### ```npm install -g expo-cli```
 
-Next initialize the project.
+Next you create a new project and then copy and paste the existing files to the existing code from this github repository.
 
 ### ```expo init productivity-app```
 
