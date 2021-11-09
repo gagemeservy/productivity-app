@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-//import { NativeScreenNavigationContainer} from "react-native-screens";
-//import { createNativeStackNavigator } from "react-native-screens/native-stack";
+import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { NativeScreenNavigationContainer} from "react-native-screens";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import LoginComponent from './LoginPage';
 
 //import styled from "styled-components"
 
-//const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
 class App extends Component {
   state = {
@@ -23,7 +25,7 @@ class App extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      /*<View style={styles.container}>
         <TouchableOpacity style={styles.button}
                           onPress={this.onPress}>
           <Text>Click me</Text>
@@ -31,10 +33,29 @@ class App extends Component {
         <View>
           <Text>You clicked {this.state.count } times</Text>
         </View>
-      </View>
+      </View>*/
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home"
+            component={HomeScreen}
+            options={{title: 'Welcome'}}
+            />
+            <Stack.Screen name="Login" component={LoginComponent}/>
+        </Stack.Navigator>
+      </NavigationContainer>
     );
   }
 }
+
+const HomeScreen = ({navigation}) => {
+  return (
+    <Button style={styles.button} title="Sign In"
+    onPress={() =>
+      navigation.navigate('Login')
+    }
+    />
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

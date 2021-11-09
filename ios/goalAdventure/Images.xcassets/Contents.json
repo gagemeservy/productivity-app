@@ -1,4 +1,11 @@
 {
+  "images": [
+    {
+      "idiom" : "profiledefault",
+      "filename" : "profileicon96",
+      "scale" : "2x"
+    }
+],
   "info" : {
     "version" : 1,
     "author" : "expo"
