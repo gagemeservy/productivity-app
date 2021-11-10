@@ -25,7 +25,9 @@ const LoginComponent = ({navigation}) => {
                 textContentType="password"
                 secureTextEntry={true}
                 />
-            <TouchableOpacity style={styles.signinbutton}>
+            <TouchableOpacity style={styles.signinbutton} onPress={() => {
+                    navigation.replace('Task')
+                }}>
                 <Text style={{color: '#FFFFFF', fontSize: 18}}>SIGN IN</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.extrabutton}>
