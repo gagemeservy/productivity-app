@@ -1,7 +1,10 @@
-import React from "react";
+import React from 'react'
 import {SafeAreaView, View, StyleSheet, TextInput, Button, Image, Text, TouchableOpacity} from "react-native";
 
-const LoginComponent = ({navigation}) => {
+const RegisterComponent = ({navigation}) => {
+
+    const [first, onChangeFirst] = React.useState(null);
+    const [last, onChangeLast] = React.useState(null);
     const [email, onChangeEmail] = React.useState(null);
     const [password, onChangePassword] = React.useState(null);
 
@@ -10,6 +13,18 @@ const LoginComponent = ({navigation}) => {
             <Image source={require('./img/profileIcon.png')}
                 style={{width: 215, height: 215, margin: 20}}
             />
+            <TextInput placeholderTextColor={'#C7C7C7'}
+                style={styles.input}
+                onChangeText={onChangeFirst}
+                value={first}
+                placeholder="First Name"
+                />
+            <TextInput placeholderTextColor={'#C7C7C7'}
+                style={styles.input}
+                onChangeText={onChangeLast}
+                value={last}
+                placeholder="Last Name"
+                />
             <TextInput placeholderTextColor={'#C7C7C7'}
                 style={styles.input}
                 onChangeText={onChangeEmail}
@@ -26,26 +41,17 @@ const LoginComponent = ({navigation}) => {
                 secureTextEntry={true}
                 />
             <TouchableOpacity style={styles.signinbutton}>
-                <Text style={{color: '#FFFFFF', fontSize: 18}}>SIGN IN</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.extrabutton}>
-                <Text style={styles.extraText}>Forgot password?</Text>
+                <Text style={{color: '#FFFFFF', fontSize: 18}}>SIGN UP</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.extrabutton}
                 onPress={() => {
-                    navigation.replace('Register')
+                    navigation.replace('Login')
                 }}>
-                <Text style={styles.extraText}>Create an Account</Text>
+                <Text style={styles.extraText}>Already have an Account?</Text>
             </TouchableOpacity>
-            <Button 
-                title="Go back to home"
-                onPress={() =>
-                    navigation.replace('Home')}/>
         </SafeAreaView>
     );
 };
-
-
 
 const styles = StyleSheet.create({
     container: {
@@ -80,4 +86,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default LoginComponent;
+export default RegisterComponent;

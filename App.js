@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { NativeScreenNavigationContainer} from "react-native-screens";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginComponent from './LoginPage';
+import RegisterComponent from './RegisterPage';
 
 //import styled from "styled-components"
 
@@ -41,6 +42,7 @@ class App extends Component {
             options={{title: 'Welcome'}}
             />
             <Stack.Screen name="Login" component={LoginComponent}/>
+            <Stack.Screen name="Register" component={RegisterComponent}/>
         </Stack.Navigator>
       </NavigationContainer>
     );
@@ -51,7 +53,7 @@ const HomeScreen = ({navigation}) => {
   return (
     <Button style={styles.button} title="Sign In"
     onPress={() =>
-      navigation.navigate('Login')
+      navigation.replace('Login')
     }
     />
   );
