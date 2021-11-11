@@ -1,31 +1,12 @@
 import React from "react";
 import {FlatList, SafeAreaView, View, StyleSheet, TextInput, Button, Image, Text, TouchableOpacity, Dimensions} from "react-native";
+//import CheckBox from '@react-native-community/checkbox';
 
 const TaskComponent = ({navigation}) => {
     const allTasks = [["Do dishes", 2],["Do laundry", 3],["Do hair", 1],["Do homework", 3],["Fix car", 3],["Sleep", 1]];
     const windowWidth = Dimensions.get('window').width;
     const imgHeight = Math.round((windowWidth*11)/16);
-    const FlatListBasics = () => {
-        return (
-          <View style={styles.container}>
-            <FlatList
-              data={[
-                {key: 'Devin'},
-                {key: 'Dan'},
-                {key: 'Dominic'},
-                {key: 'Jackson'},
-                {key: 'James'},
-                {key: 'Joel'},
-                {key: 'John'},
-                {key: 'Jillian'},
-                {key: 'Jimmy'},
-                {key: 'Julie'},
-              ]}
-              renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
-            />
-          </View>
-        );
-      }
+    //const [toggleCheckBox, setToggleCheckBox] = useState(false)
 
     return (
         <SafeAreaView style={styles.container}>
@@ -39,18 +20,25 @@ const TaskComponent = ({navigation}) => {
             <SafeAreaView style={styles.flatlist_container}>
             <FlatList
               data={[
-                {key: 'Devin'},
-                {key: 'Dan'},
-                {key: 'Dominic'},
-                {key: 'Jackson'},
-                {key: 'James'},
-                {key: 'Joel'},
-                {key: 'John'},
-                {key: 'Jillian'},
-                {key: 'Jimmy'},
-                {key: 'Julie'},
+                {key: 'Do dishes', value: 2},
+                {key: 'Do laundry', value: 3},
+                {key: 'Do hair', value: 1},
+                {key: 'Do homework', value: 3},
+                {key: 'Fix car', value: 3},
+                {key: 'Sleep', value: 1},
+                {key: 'Eat', value: 2},
+                {key: 'Make Dinner', value: 3},
+                {key: 'Cry a little', value: 1},
+                {key: 'Be happy', value: 2},
+                {key: 'Call mom', value: 1},
+                {key: 'Call dad', value: 3},
+                {key: 'Get new phone', value: 3},
+                {key: 'Get new hat', value: 2},
+                {key: 'Fix watch', value: 4},
+                {key: 'Get hair cut', value: 2},
+                {key: 'Watch Inception', value: 1},
               ]}
-              renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+              renderItem={({item}) => <SafeAreaView><Text style={styles.item}>*checkbox* {item.key} - Difficulty: {item.value}</Text></SafeAreaView>}
             />
         </SafeAreaView>
         </SafeAreaView>
@@ -73,6 +61,9 @@ const styles = StyleSheet.create({
         padding : 10,
         fontSize: 18,
         height: 44,
+        width: 660,
+        borderColor: "#fff",
+        borderWidth:  2
     },
     input: {
         height: 40,
