@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginComponent from './LoginPage';
 import RegisterComponent from './RegisterPage';
 import TaskComponent from './TaskPage';
+import InventoryComponent from './InventoryPage';
 
 //import styled from "styled-components"
 
@@ -45,6 +46,7 @@ class App extends Component {
             <Stack.Screen name="Login" component={LoginComponent}/>
             <Stack.Screen name="Register" component={RegisterComponent}/>
             <Stack.Screen name="Task" component={TaskComponent}/>
+            <Stack.Screen name="Inventory" component={InventoryComponent}/>
         </Stack.Navigator>
       </NavigationContainer>
     );

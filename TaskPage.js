@@ -1,5 +1,6 @@
 import React from "react";
-import {FlatList, SafeAreaView, View, StyleSheet, TextInput, Button, Image, Text, TouchableOpacity, Dimensions} from "react-native";
+import {FlatList, SafeAreaView, View, StyleSheet, TextInput, Button, Image, Text, TouchableOpacity, Dimensions, NavigationContainer} from "react-native";
+import { createDrawerNavigator } from '@react-navigation/drawer';
 //import CheckBox from '@react-native-community/checkbox';
 
 const TaskComponent = ({navigation}) => {
@@ -7,16 +8,23 @@ const TaskComponent = ({navigation}) => {
     const windowWidth = Dimensions.get('window').width;
     const imgHeight = Math.round((windowWidth*11)/16);
     //const [toggleCheckBox, setToggleCheckBox] = useState(false)
+    const Drawer = createDrawerNavigator();
 
     return (
         <SafeAreaView style={styles.container}>
+            <TouchableOpacity style={styles.signinbutton} onPress={() => {
+                    navigation.replace('Login')
+                }}>
+                <Text style={{color: '#FFFFFF', fontSize: 18}}>Logout</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.signinbutton} onPress={() => {
+                    navigation.replace('Inventory')
+                }}>
+                <Text style={{color: '#FFFFFF', fontSize: 18}}>Inventory</Text>
+            </TouchableOpacity>
             <Image source={require('./img/map.png')}
                 resizeMode={'cover'} style={{width: windowWidth, height: imgHeight, margin: 20}}
             />
-            <Button 
-                title="Go back to home"
-                onPress={() =>
-                    navigation.replace('Home')}/>
             <SafeAreaView style={styles.flatlist_container}>
             <FlatList
               data={[
@@ -84,8 +92,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    extrabutton: {
-        margin: 15,
+    buttons: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 4,
+        elevation: 3,
+        backgroundColor: '#71A0FC',
+        color: '#7C7C7C'
     },
     extraText: {
         color: '#7C7C7C'

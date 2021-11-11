@@ -1,0 +1,2 @@
+All packages I installed
+npm i @react-navigation/drawer
