@@ -1,15 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { NativeScreenNavigationContainer} from "react-native-screens";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginComponent from './LoginPage';
 import RegisterComponent from './RegisterPage';
 import TaskComponent from './TaskPage';
-import InventoryComponent from './InventoryPage';
-
-//import styled from "styled-components"
+import { ModalPicker } from './ModalPicker';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,15 +25,6 @@ class App extends Component {
 
   render() {
     return (
-      /*<View style={styles.container}>
-        <TouchableOpacity style={styles.button}
-                          onPress={this.onPress}>
-          <Text>Click me</Text>
-        </TouchableOpacity>
-        <View>
-          <Text>You clicked {this.state.count } times</Text>
-        </View>
-      </View>*/
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Home"
@@ -46,7 +34,7 @@ class App extends Component {
             <Stack.Screen name="Login" component={LoginComponent}/>
             <Stack.Screen name="Register" component={RegisterComponent}/>
             <Stack.Screen name="Task" component={TaskComponent}/>
-            <Stack.Screen name="Inventory" component={InventoryComponent}/>
+            <Stack.Screen name="ModalPicker" component={ModalPicker}/>
         </Stack.Navigator>
       </NavigationContainer>
     );

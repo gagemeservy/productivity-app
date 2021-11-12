@@ -1,2 +1,2 @@
 All packages I installed
-npm i @react-navigation/drawer
+npm install react-native-vector-icons
