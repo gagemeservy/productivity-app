@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
-import { StyleSheet, Button } from 'react-native';
+import { StyleSheet, Button, ImageBackground, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginComponent from './LoginPage';
 import RegisterComponent from './RegisterPage';
 import TaskComponent from './TaskPage';
 import { ModalPicker } from './ModalPicker';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,15 +22,13 @@ class App extends Component {
     })
   }
 
-
-
   render() {
     return (
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
           <Stack.Screen name="Home"
             component={HomeScreen}
-            options={{title: 'Welcome'}}
+            
             />
             <Stack.Screen name="Login" component={LoginComponent}/>
             <Stack.Screen name="Register" component={RegisterComponent}/>
@@ -43,11 +42,24 @@ class App extends Component {
 
 const HomeScreen = ({navigation}) => {
   return (
-    <Button style={styles.button} title="Sign In"
-    onPress={() =>
-      navigation.replace('Login')
-    }
-    />
+    <ImageBackground source={require('./img/Background.png')} resizeMode="cover" style=
+        {styles.image}>
+    <View style={styles.container}>
+      <Text style={styles.title}>Goal Adventure</Text>
+      <TouchableOpacity style={styles.button}
+        onPress={ () => {
+          navigation.replace('Login')
+        }}>
+        <Text style={styles.buttonText}>LOGIN</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button}
+        onPress={ () => {
+          navigation.replace('Register')
+        }}>
+        <Text style={styles.buttonText}>CREATE ACCOUNT</Text>
+      </TouchableOpacity>
+    </View>
+    </ImageBackground>
   );
 };
 
@@ -58,10 +70,27 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button: {
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    padding: 10,
-    marginBottom: 10
+    height: 50,
+    width: 308,
+    margin: 12,
+    backgroundColor: '#71A0FC',
+    borderRadius: 22,
+    color: '#FFFFFF',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  buttonText:{ 
+    color: '#FFFFFF', fontSize: 18
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center"
+  },
+  title: {
+    fontSize: 48,
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+    margin: 12
   }
 });
 

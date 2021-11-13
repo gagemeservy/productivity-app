@@ -11,7 +11,7 @@ const ModalPicker = (props, { navigation }) => {
         props.changeModalVisibilty(false);
         props.setData(option);
         if(option == "Logout"){
-            option = "Login";
+            option = "Home";
         }
         else if(option == "Tasks"){
             option = "Task";
