@@ -11,6 +11,26 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Stack = createNativeStackNavigator();
 
+global.toDoList=[
+  { key: 'Do dishes', value: 2 },
+  { key: 'Do laundry', value: 3 },
+  { key: 'Do hair', value: 1 },
+  { key: 'Do homework', value: 3 },
+  { key: 'Fix car', value: 3 },
+  { key: 'Sleep', value: 1 },
+  { key: 'Eat', value: 2 },
+  { key: 'Make Dinner', value: 3 },
+  { key: 'Cry a little', value: 1 },
+  { key: 'Be happy', value: 2 },
+  { key: 'Call mom', value: 1 },
+  { key: 'Call dad', value: 3 },
+  { key: 'Get new phone', value: 3 },
+  { key: 'Get new hat', value: 2 },
+  { key: 'Fix watch', value: 4 },
+  { key: 'Get hair cut', value: 2 },
+  { key: 'Watch Inception', value: 1 },
+];
+
 class App extends Component {
   state = {
     count: 0
