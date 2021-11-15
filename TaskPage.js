@@ -1,11 +1,10 @@
 import React, {useState} from "react";
-import {Modal, FlatList, SafeAreaView, View, StyleSheet, TextInput, Button, Image, Text, TouchableOpacity, Dimensions, NavigationContainer } from "react-native";
+import {Modal, FlatList, SafeAreaView, View, StyleSheet, TextInput, Button, Image, Text, TouchableOpacity, Dimensions, NavigationContainer, Platform, ToastAndroid, Alert } from "react-native";
 import {ModalPicker} from './ModalPicker';
 import Icon from 'react-native-vector-icons/Octicons';
 import { ScreenStackHeaderRightView } from "react-native-screens";
 
 const TaskComponent = ({ navigation }) => {
-    const allTasks = [["Do dishes", 2], ["Do laundry", 3], ["Do hair", 1], ["Do homework", 3], ["Fix car", 3], ["Sleep", 1]];
     const windowWidth = Dimensions.get('window').width;
     const imgHeight = Math.round((windowWidth * 11) / 16);
     const [chooseData, setchooseData] = useState('Select item...');
@@ -20,15 +19,23 @@ const TaskComponent = ({ navigation }) => {
         navigation.replace(pageName);
     }
 
+    function notifyMessage(title, msg) {
+        if (Platform.OS == 'android') {
+            ToastAndroid.show(msg, ToastAndroid.SHORT)
+        } else {
+            Alert.alert(title, msg);
+        }
+    }
+
     return (
-        
-        <SafeAreaView /*style={styles.container}*/>
+        <SafeAreaView>
             <View style={styles.topBar}>
-                <TouchableOpacity style={styles.menu}
-                    onPress={() => {changeModalVisibilty(true)}}
-                    >
-                        <Icon name='three-bars' size={30} color='#000'/>
-                </TouchableOpacity>
+                
+                    <TouchableOpacity style={styles.menu}
+                        onPress={() => {changeModalVisibilty(true)}}
+                        >
+                            <Icon name='three-bars' size={30} color='#000'/>
+                    </TouchableOpacity>   
                 <Modal
                     transparent={true}
                     animationType='fade'
@@ -38,37 +45,29 @@ const TaskComponent = ({ navigation }) => {
                         changeModalVisibilty={changeModalVisibilty}
                         setData={setData}
                         navigateTo={navigateTo}></ModalPicker>
-                </Modal>
-            </View>
-            <View style={styles.container}>
+                    </Modal> 
+                </View>
+                <SafeAreaView style={styles.container}>
                 <Image source={require('./img/map.png')}
                     resizeMode={'cover'} style={{ width: windowWidth, height: imgHeight, margin: 20 }}
+                /></SafeAreaView>
+                <FlatList 
+                    data = {toDoList}
+                    renderItem={({ item }) => <View style={styles.item}>
+                    <View style={styles.itemLeft}>
+                        <TouchableOpacity style={styles.square} onPress={() => {
+                        notifyMessage("Completed!", item.key)
+                        finishedList.push(item)
+                        var index = toDoList.indexOf(item);
+                        if (index !== -1) {
+                            toDoList.splice(index, 1)
+                        }
+                    }}></TouchableOpacity>
+                        <Text style={styles.itemText}>{item.key}</Text>
+                    </View>
+                    <View style={styles.circular}><Text>TP : {item.value}</Text></View>
+                </View>}
                 />
-                <SafeAreaView style={styles.flatlist_container}>
-                    <FlatList
-                        data={[
-                            { key: 'Do dishes', value: 2 },
-                            { key: 'Do laundry', value: 3 },
-                            { key: 'Do hair', value: 1 },
-                            { key: 'Do homework', value: 3 },
-                            { key: 'Fix car', value: 3 },
-                            { key: 'Sleep', value: 1 },
-                            { key: 'Eat', value: 2 },
-                            { key: 'Make Dinner', value: 3 },
-                            { key: 'Cry a little', value: 1 },
-                            { key: 'Be happy', value: 2 },
-                            { key: 'Call mom', value: 1 },
-                            { key: 'Call dad', value: 3 },
-                            { key: 'Get new phone', value: 3 },
-                            { key: 'Get new hat', value: 2 },
-                            { key: 'Fix watch', value: 4 },
-                            { key: 'Get hair cut', value: 2 },
-                            { key: 'Watch Inception', value: 1 },
-                        ]}
-                        renderItem={({ item }) => <SafeAreaView><Text style={styles.item}>*checkbox* {item.key} - Difficulty: {item.value}</Text></SafeAreaView>}
-                    />
-                </SafeAreaView>
-            </View>
         </SafeAreaView>
     );
 };
@@ -79,24 +78,34 @@ const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100%'
+        maxHeight: '80%',
     },
     menu: {
         paddingTop: 10,
         alignItems: 'flex-start',
         justifyContent: 'flex-start'
     },
-    flatlist_container: {
-        flex: 1,
-        paddingTop: 22
+    itemLeft: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        flexWrap: 'wrap'
     },
     item: {
-        padding: 10,
-        fontSize: 18,
-        height: 44,
-        width: 660,
-        borderColor: "#fff",
-        borderWidth: 2
+        backgroundColor: "#FFF",
+        padding: 15,
+        borderRadius: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: 10
+    },
+    square:{
+        width: 24,
+        height: 24,
+        backgroundColor: '#55BCF6',
+        opacity: 0.4,
+        borderRadius: 5,
+        marginRight: 15
     },
     input: {
         height: 40,
@@ -134,6 +143,17 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
         margin: 12
+    },
+    itemText: {
+        maxWidth: '80%',
+    },
+    circular: {
+        width: 64,
+        height: 30,
+        borderColor: '#55BCF6',
+        borderWidth: 2,
+        borderRadius: 6,
+        alignItems: 'center'
     }
 });
 
