@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Modal, FlatList, SafeAreaView, View, StyleSheet, TextInput, Button, Image, Text, TouchableOpacity, Dimensions, NavigationContainer } from "react-native";
 import {ModalPicker} from './ModalPicker';
 import Icon from 'react-native-vector-icons/Octicons';
+import { ScreenStackHeaderRightView } from "react-native-screens";
 
 const TaskComponent = ({ navigation }) => {
     const allTasks = [["Do dishes", 2], ["Do laundry", 3], ["Do hair", 1], ["Do homework", 3], ["Fix car", 3], ["Sleep", 1]];
@@ -20,49 +21,54 @@ const TaskComponent = ({ navigation }) => {
     }
 
     return (
-        <SafeAreaView style={styles.container}>
-            <TouchableOpacity style={styles.menu}
-                onPress={() => {changeModalVisibilty(true)}}
-                >
-                    <Icon name='three-bars' size={30} color='#000'/>
-            </TouchableOpacity>
-            <Modal
-                transparent={true}
-                animationType='fade'
-                visible={isModalVisible}
-                nRequestClose={() => changeModalVisibilty(false)}>
-                    <ModalPicker 
-                    changeModalVisibilty={changeModalVisibilty}
-                    setData={setData}
-                    navigateTo={navigateTo}></ModalPicker>
+        
+        <SafeAreaView /*style={styles.container}*/>
+            <View style={styles.topBar}>
+                <TouchableOpacity style={styles.menu}
+                    onPress={() => {changeModalVisibilty(true)}}
+                    >
+                        <Icon name='three-bars' size={30} color='#000'/>
+                </TouchableOpacity>
+                <Modal
+                    transparent={true}
+                    animationType='fade'
+                    visible={isModalVisible}
+                    nRequestClose={() => changeModalVisibilty(false)}>
+                        <ModalPicker 
+                        changeModalVisibilty={changeModalVisibilty}
+                        setData={setData}
+                        navigateTo={navigateTo}></ModalPicker>
                 </Modal>
-            <Image source={require('./img/map.png')}
-                resizeMode={'cover'} style={{ width: windowWidth, height: imgHeight, margin: 20 }}
-            />
-            <SafeAreaView style={styles.flatlist_container}>
-                <FlatList
-                    data={[
-                        { key: 'Do dishes', value: 2 },
-                        { key: 'Do laundry', value: 3 },
-                        { key: 'Do hair', value: 1 },
-                        { key: 'Do homework', value: 3 },
-                        { key: 'Fix car', value: 3 },
-                        { key: 'Sleep', value: 1 },
-                        { key: 'Eat', value: 2 },
-                        { key: 'Make Dinner', value: 3 },
-                        { key: 'Cry a little', value: 1 },
-                        { key: 'Be happy', value: 2 },
-                        { key: 'Call mom', value: 1 },
-                        { key: 'Call dad', value: 3 },
-                        { key: 'Get new phone', value: 3 },
-                        { key: 'Get new hat', value: 2 },
-                        { key: 'Fix watch', value: 4 },
-                        { key: 'Get hair cut', value: 2 },
-                        { key: 'Watch Inception', value: 1 },
-                    ]}
-                    renderItem={({ item }) => <SafeAreaView><Text style={styles.item}>*checkbox* {item.key} - Difficulty: {item.value}</Text></SafeAreaView>}
+            </View>
+            <View style={styles.container}>
+                <Image source={require('./img/map.png')}
+                    resizeMode={'cover'} style={{ width: windowWidth, height: imgHeight, margin: 20 }}
                 />
-            </SafeAreaView>
+                <SafeAreaView style={styles.flatlist_container}>
+                    <FlatList
+                        data={[
+                            { key: 'Do dishes', value: 2 },
+                            { key: 'Do laundry', value: 3 },
+                            { key: 'Do hair', value: 1 },
+                            { key: 'Do homework', value: 3 },
+                            { key: 'Fix car', value: 3 },
+                            { key: 'Sleep', value: 1 },
+                            { key: 'Eat', value: 2 },
+                            { key: 'Make Dinner', value: 3 },
+                            { key: 'Cry a little', value: 1 },
+                            { key: 'Be happy', value: 2 },
+                            { key: 'Call mom', value: 1 },
+                            { key: 'Call dad', value: 3 },
+                            { key: 'Get new phone', value: 3 },
+                            { key: 'Get new hat', value: 2 },
+                            { key: 'Fix watch', value: 4 },
+                            { key: 'Get hair cut', value: 2 },
+                            { key: 'Watch Inception', value: 1 },
+                        ]}
+                        renderItem={({ item }) => <SafeAreaView><Text style={styles.item}>*checkbox* {item.key} - Difficulty: {item.value}</Text></SafeAreaView>}
+                    />
+                </SafeAreaView>
+            </View>
         </SafeAreaView>
     );
 };
@@ -123,6 +129,11 @@ const styles = StyleSheet.create({
     },
     extraText: {
         color: '#7C7C7C'
+    },
+    topBar: {
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+        margin: 12
     }
 });
 
