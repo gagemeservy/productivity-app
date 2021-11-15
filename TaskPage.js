@@ -62,6 +62,7 @@ const TaskComponent = ({ navigation }) => {
                         if (index !== -1) {
                             toDoList.splice(index, 1)
                         }
+                        navigation.replace('Task');
                     }}></TouchableOpacity>
                         <Text style={styles.itemText}>{item.key}</Text>
                     </View>
