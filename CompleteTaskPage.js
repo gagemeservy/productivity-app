@@ -21,7 +21,7 @@ const finishedTaskComponent = ({navigation}) => {
     }
 
  return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex: 1}}>
     <View style={styles.topBar}>
         
             <TouchableOpacity style={styles.menu}
@@ -39,6 +39,9 @@ const finishedTaskComponent = ({navigation}) => {
                 setData={setData}
                 navigateTo={navigateTo}></ModalPicker>
             </Modal> 
+        </View>
+        <View style={styles.title}>
+            <Text style={styles.titleText}>Completed Tasks</Text>
         </View>
         <FlatList 
                     data = {finishedList}
@@ -101,7 +104,7 @@ const styles = StyleSheet.create({
         margin: 12
     },
     itemText: {
-        maxWidth: '80%',
+        maxWidth: '100%',
     },
     circular: {
         width: 64,
@@ -110,6 +113,16 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 6,
         alignItems: 'center'
+    },
+    title: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#71A0FC'
+    },
+    titleText: {
+        fontSize: 38,
+        fontWeight: 'bold',
+        color: '#FFFFFF'
     }
 });
 

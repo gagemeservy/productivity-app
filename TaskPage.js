@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-import {Modal, FlatList, SafeAreaView, View, StyleSheet, TextInput, Button, Image, Text, TouchableOpacity, Dimensions, NavigationContainer, Platform, ToastAndroid, Alert } from "react-native";
+import {Modal, FlatList, SafeAreaView, View, StyleSheet, TextInput, Button, Image, Text, TouchableOpacity, Dimensions, NavigationContainer, Platform, ToastAndroid, Alert} from "react-native";
 import {ModalPicker} from './ModalPicker';
 import Icon from 'react-native-vector-icons/Octicons';
 import { ScreenStackHeaderRightView } from "react-native-screens";
+import { ScrollView } from "react-native-gesture-handler";
 
 const TaskComponent = ({ navigation }) => {
     const windowWidth = Dimensions.get('window').width;
@@ -28,7 +29,7 @@ const TaskComponent = ({ navigation }) => {
     }
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={{flex: 1}}>
             <View style={styles.topBar}>
                 
                     <TouchableOpacity style={styles.menu}
@@ -46,29 +47,30 @@ const TaskComponent = ({ navigation }) => {
                         setData={setData}
                         navigateTo={navigateTo}></ModalPicker>
                     </Modal> 
-                </View>
-                <SafeAreaView style={styles.container}>
+            </View>
+            <SafeAreaView style={styles.container}>
                 <Image source={require('./img/map.png')}
                     resizeMode={'cover'} style={{ width: windowWidth, height: imgHeight, margin: 20 }}
-                /></SafeAreaView>
-                <FlatList 
-                    data = {toDoList}
-                    renderItem={({ item }) => <View style={styles.item}>
-                    <View style={styles.itemLeft}>
-                        <TouchableOpacity style={styles.square} onPress={() => {
-                        notifyMessage("Completed!", item.key)
-                        finishedList.push(item)
-                        var index = toDoList.indexOf(item);
-                        if (index !== -1) {
-                            toDoList.splice(index, 1)
-                        }
-                        navigation.replace('Task');
-                    }}></TouchableOpacity>
-                        <Text style={styles.itemText}>{item.key}</Text>
-                    </View>
-                    <View style={styles.circular}><Text>TP : {item.value}</Text></View>
-                </View>}
                 />
+            </SafeAreaView>
+            <FlatList
+                data = {toDoList}
+                renderItem={({ item }) => <View style={styles.item}>
+                <View style={styles.itemLeft}>
+                    <TouchableOpacity style={styles.square} onPress={() => {
+                    notifyMessage("Completed!", item.key)
+                    finishedList.push(item)
+                    var index = toDoList.indexOf(item);
+                    if (index !== -1) {
+                        toDoList.splice(index, 1)
+                    }
+                    navigation.replace('Task');
+                }}></TouchableOpacity>
+                    <Text style={styles.itemText}>{item.key}</Text>
+                </View>
+                <View style={styles.circular}><Text>TP : {item.value}</Text></View>
+                </View>}
+            />
         </SafeAreaView>
     );
 };
@@ -84,7 +86,8 @@ const styles = StyleSheet.create({
     menu: {
         paddingTop: 10,
         alignItems: 'flex-start',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
+        paddingEnd: 10
     },
     itemLeft: {
         flexDirection: 'row',
@@ -143,7 +146,6 @@ const styles = StyleSheet.create({
     topBar: {
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
-        margin: 12
     },
     itemText: {
         maxWidth: '80%',
