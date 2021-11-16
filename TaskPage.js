@@ -11,6 +11,8 @@ const TaskComponent = ({ navigation }) => {
     const imgHeight = Math.round((windowWidth * 11) / 16);
     const [chooseData, setchooseData] = useState('Select item...');
     const [isModalVisible, setisModalVisible] = useState(false);
+    const [state, setState] = useState(false)
+    
     const changeModalVisibilty = (bool) => {
         setisModalVisible(bool)
     }
@@ -71,7 +73,7 @@ const TaskComponent = ({ navigation }) => {
     function PrintInt(IntValue) {
         Alert.alert(IntValue.toString());
     }
-
+       
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.topBar}>
@@ -96,6 +98,7 @@ const TaskComponent = ({ navigation }) => {
                 <MapBattleScreen />
             </SafeAreaView>
             <FlatList
+                extraData={state}
                 data={toDoList}
                 renderItem={({ item }) => <View style={styles.item}>
                     <View style={styles.itemLeft}>
@@ -107,7 +110,8 @@ const TaskComponent = ({ navigation }) => {
                                 toDoList.splice(index, 1)
                             }
                             doTPcalculations(item.value);
-                            navigation.replace('Task');
+                            setState(!state)
+                            //navigation.replace('Task');
                         }}></TouchableOpacity>
                         <Text style={styles.itemText}>{item.key}</Text>
                     </View>

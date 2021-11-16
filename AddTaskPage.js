@@ -62,12 +62,13 @@ const AddTaskComponent = ({ navigation }) => {
                         style={styles.input}
                         onChangeText={onChangeTP}
                         value={tp}
-                        textContentType="number"
+                        numeric
+                        keyboardType="numeric"
                     />
                 </View>
                 <TouchableOpacity style={styles.signinbutton}
                     onPress={() => {
-                        toDoList.push({key: taskName, value: tp})
+                        toDoList.push({key: taskName, value: parseInt(tp, 10)})
                         notifyMessage("Successful Add", taskName)
                     }}>
                     <Text style={{color: '#FFFFFF', fontSize: 18}}>ADD TASK</Text>
