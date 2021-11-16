@@ -57,7 +57,7 @@ const AddTaskComponent = ({ navigation }) => {
                         />
                 </View>
                 <View>
-                    <Text>Enter TP value:</Text>
+                    <Text>Enter Task Point(TP) difficulty value:</Text>
                     <TextInput
                         style={styles.input}
                         onChangeText={onChangeTP}
