@@ -3,7 +3,7 @@ import {
     StyleSheet, Text, View, TouchableOpacity, Dimensions, ScrollView
 } from 'react-native'
 
-const OPTIONS = ['Tasks', 'Logout', 'Completed Tasks'];
+const OPTIONS = ['Tasks', 'Logout', 'Completed Tasks', 'Add Task'];
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 const ModalPicker = (props, { navigation }) => {
@@ -18,6 +18,9 @@ const ModalPicker = (props, { navigation }) => {
         }
         else if(option == "Completed Tasks") {
             option = "Finished"
+        }
+        else if(option == "Add Task") {
+            option = "Add"
         }
         props.navigateTo(option);
     }

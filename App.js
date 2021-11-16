@@ -9,6 +9,7 @@ import TaskComponent from './TaskPage';
 import { ModalPicker } from './ModalPicker';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import finishedTaskComponent from './CompleteTaskPage';
+import AddTaskComponent from './AddTaskPage';
 
 const Stack = createNativeStackNavigator();
 
@@ -56,6 +57,7 @@ class App extends Component {
             <Stack.Screen name="Login" component={LoginComponent}/>
             <Stack.Screen name="Register" component={RegisterComponent}/>
             <Stack.Screen name="Task" component={TaskComponent}/>
+            <Stack.Screen name="Add" component={AddTaskComponent}/>
             <Stack.Screen name="ModalPicker" component={ModalPicker}/>
             <Stack.Screen name="Finished" component={finishedTaskComponent}/>
         </Stack.Navigator>
