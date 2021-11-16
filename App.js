@@ -32,6 +32,11 @@ global.toDoList=[
   { key: 'Watch Inception', value: 1 },
 ];
 
+global.inABattle = false;
+global.TotalTP = 0;
+global.battleTP = 0;
+global.neededBattleTP = 0;
+
 global.finishedList=[];
 
 class App extends Component {

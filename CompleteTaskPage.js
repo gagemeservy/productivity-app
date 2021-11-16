@@ -23,7 +23,6 @@ const finishedTaskComponent = ({navigation}) => {
  return (
     <SafeAreaView style={{flex: 1}}>
     <View style={styles.topBar}>
-        
             <TouchableOpacity style={styles.menu}
                 onPress={() => {changeModalVisibilty(true)}}
                 >
@@ -42,6 +41,7 @@ const finishedTaskComponent = ({navigation}) => {
         </View>
         <View style={styles.title}>
             <Text style={styles.titleText}>Completed Tasks</Text>
+            <Text style={styles.subtitleText}>Total Earned TP: {TotalTP}</Text>
         </View>
         <FlatList 
                     data = {finishedList}
@@ -121,6 +121,11 @@ const styles = StyleSheet.create({
     },
     titleText: {
         fontSize: 38,
+        fontWeight: 'bold',
+        color: '#FFFFFF'
+    },
+    subtitleText: {
+        fontSize: 26,
         fontWeight: 'bold',
         color: '#FFFFFF'
     }
