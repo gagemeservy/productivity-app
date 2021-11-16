@@ -35,7 +35,7 @@ global.toDoList=[
 global.inABattle = false;
 global.TotalTP = 0;
 global.battleTP = 0;
-global.neededBattleTP = 0;
+global.neededBattleTP = 10;
 
 global.finishedList=[];
 

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Modal, FlatList, SafeAreaView, View, StyleSheet, TextInput, Button, Image, Text, TouchableOpacity, Dimensions, NavigationContainer, Platform, ToastAndroid, Alert } from "react-native";
+import { Modal, Animated, FlatList, SafeAreaView, View, StyleSheet, TextInput, Button, Image, Text, TouchableOpacity, Dimensions, NavigationContainer, Platform, ToastAndroid, Alert } from "react-native";
 import { ModalPicker } from './ModalPicker';
 import Icon from 'react-native-vector-icons/Octicons';
 import { ScreenStackHeaderRightView } from "react-native-screens";
 import { ScrollView } from "react-native-gesture-handler";
+import { color } from "react-native-reanimated";
 
 const TaskComponent = ({ navigation }) => {
     const windowWidth = Dimensions.get('window').width;
@@ -31,26 +32,34 @@ const TaskComponent = ({ navigation }) => {
     function MapBattleScreen() {
         if (inABattle) {
             return (
-                <Image source={require('./img/battle.png')}
+                <SafeAreaView><SafeAreaView style={styles.container}>
+                <Image source={require('./img/new_battle.png')}
                     resizeMode={'cover'} style={{ width: windowWidth, height: imgHeight, margin: 20 }}
-                />);
+                />
+                <Text style={styles.infoText}>Current Quest: Defeat Goblins</Text>
+                <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>
+                <Animated.View
+                style={[styles.innerStyle, { width: ((battleTP/neededBattleTP)*100) + "%" },]}
+                />
+                </SafeAreaView>);
         }
         return (<TouchableOpacity onPress={() => {
             inABattle = true;
             neededBattleTP = 10;
             navigation.replace('Task');
-        }}>
-            <Image source={require('./img/map.png')}
+        }} style={styles.container}>
+            <Image source={require('./img/new_map.png')}
                 resizeMode={'cover'} style={{ width: windowWidth, height: imgHeight, margin: 20 }}
             />
+            <Text style={styles.infoText}>Tap A Location To Travel To</Text>
         </TouchableOpacity>);
     }
 
-    function doTPcalculations(valueToAdd){
+    function doTPcalculations(valueToAdd) {
         TotalTP = TotalTP + valueToAdd;
         battleTP = battleTP + valueToAdd;
-        if(inABattle){
-            if(battleTP >= neededBattleTP){
+        if (inABattle) {
+            if (battleTP >= neededBattleTP) {
                 inABattle = false;
                 battleTP = 0;
                 navigation.replace('Task');
@@ -83,7 +92,7 @@ const TaskComponent = ({ navigation }) => {
                         navigateTo={navigateTo}></ModalPicker>
                 </Modal>
             </View>
-            <SafeAreaView style={styles.container}>
+            <SafeAreaView>
                 <MapBattleScreen />
             </SafeAreaView>
             <FlatList
@@ -115,7 +124,6 @@ const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
         alignItems: 'center',
-        maxHeight: '80%',
     },
     menu: {
         paddingTop: 10,
@@ -138,8 +146,8 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     square: {
-        width: 24,
-        height: 24,
+        width: 32,
+        height: 32,
         backgroundColor: '#55BCF6',
         opacity: 0.4,
         borderRadius: 5,
@@ -191,6 +199,18 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 6,
         alignItems: 'center'
+    },
+    innerStyle:{
+    width: "100%",
+    height: 31,
+    borderRadius: 16,
+    backgroundColor:"green",
+    },
+    infoText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#55BCF6',
+        paddingBottom: 5
     }
 });
 
