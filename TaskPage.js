@@ -58,7 +58,7 @@ const TaskComponent = ({ navigation }) => {
             currentEnemyName = "Flaming Skull";
             neededBattleTP = 8;
             return(<SafeAreaView><Image source={require('./img/Skeleton_Flaming_Skull.png')}
-                resizeMode={'cover'} style={{ position: 'absolute', top: -180, left: 160, width: 150, height: 125 }} /><Text style={styles.infoText}>Current Quest:</Text>
+                resizeMode={'cover'} style={{ position: 'absolute', top: -250, left: 160, width: 100, height: 140 }} /><Text style={styles.infoText}>Current Quest:</Text>
                 <Text style={styles.infoText}>Defeat the {currentEnemyName}</Text>
                 <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>);
         }
@@ -74,7 +74,7 @@ const TaskComponent = ({ navigation }) => {
             currentEnemyName = "Hooded Mage";
             neededBattleTP = 15;
             return(<SafeAreaView><Image source={require('./img/Skeleton_Mage_Hooded.png')}
-                resizeMode={'cover'} style={{ position: 'absolute', top: -180, left: 160, width: 150, height: 125 }} /><Text style={styles.infoText}>Current Quest:</Text>
+                resizeMode={'cover'} style={{ position: 'absolute', top: -220, left: 140, width: 150, height: 175 }} /><Text style={styles.infoText}>Current Quest:</Text>
                 <Text style={styles.infoText}>Defeat the {currentEnemyName}</Text>
                 <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>);
         }
@@ -82,7 +82,7 @@ const TaskComponent = ({ navigation }) => {
             currentEnemyName = "Mage";
             neededBattleTP = 12;
             return(<SafeAreaView><Image source={require('./img/Skeleton_Mage.png')}
-                resizeMode={'cover'} style={{ position: 'absolute', top: -180, left: 160, width: 150, height: 125  }} /><Text style={styles.infoText}>Current Quest:</Text>
+                resizeMode={'cover'} style={{ position: 'absolute', top: -220, left: 140, width: 150, height: 175  }} /><Text style={styles.infoText}>Current Quest:</Text>
                 <Text style={styles.infoText}>Defeat the {currentEnemyName}</Text>
                 <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>);
         }
@@ -144,8 +144,8 @@ const TaskComponent = ({ navigation }) => {
                 <Image source={require('./img/battle-bg.png')}
                     resizeMode={'cover'} style={{ width: windowWidth, height: imgHeight, margin: 20 }}
                 />
-                <Image source={require('./img/mainPlayer_battle.png')}
-                    resizeMode={'cover'} style={{ position: 'absolute', top: 60, left: -20, width: 225, height: 225 }} />
+                <Image source={require('./img/catFighter.gif')}
+                    resizeMode={'cover'} style={{ position: 'absolute', top: 100, left: -20, width: 200, height: 200 }} />
                 <GetRandomEnemy/>
                 </SafeAreaView>
                 <Animated.View
