@@ -34,7 +34,9 @@ const TaskComponent = ({ navigation }) => {
     function MapBattleScreen() {
         if (inABattle) {
             return (
-                <SafeAreaView><SafeAreaView style={styles.container}>
+                <TouchableOpacity onPress={() => {
+                    notifyMessage("You must finish the current quest to return to the map screen.");
+                }}><SafeAreaView style={styles.container}>
                 <Image source={require('./img/new_battle.png')}
                     resizeMode={'cover'} style={{ width: windowWidth, height: imgHeight, margin: 20 }}
                 />
@@ -43,12 +45,13 @@ const TaskComponent = ({ navigation }) => {
                 <Animated.View
                 style={[styles.innerStyle, { width: ((battleTP/neededBattleTP)*100) + "%" },]}
                 />
-                </SafeAreaView>);
+                </TouchableOpacity>);
         }
         return (<TouchableOpacity onPress={() => {
             inABattle = true;
             neededBattleTP = 10;
             navigation.replace('Task');
+            notifyMessage("Enemies are attacking you on your way to the next area!");
         }} style={styles.container}>
             <Image source={require('./img/new_map.png')}
                 resizeMode={'cover'} style={{ width: windowWidth, height: imgHeight, margin: 20 }}
@@ -64,6 +67,7 @@ const TaskComponent = ({ navigation }) => {
             if (battleTP >= neededBattleTP) {
                 inABattle = false;
                 battleTP = 0;
+                notifyMessage("You finished the quest!", "");
                 navigation.replace('Task');
             }
         }
