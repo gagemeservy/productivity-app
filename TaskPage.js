@@ -31,17 +31,123 @@ const TaskComponent = ({ navigation }) => {
         }
     }
 
+    function GetRandomEnemy(){
+        if (enemyChosen == false){
+            randomEnemyNum = Math.floor(Math.random()*12);
+            enemyChosen = true;
+        }
+        if(randomEnemyNum == 0){
+            currentEnemyName = "Skeleton Archer";
+            neededBattleTP = 10;
+            return(<SafeAreaView
+            ><Image source={require('./img/Skeleton_Archer.png')}
+                resizeMode={'cover'} style={{ position: 'absolute', top: -180, left: 160, width: 150, height: 125  }} />
+                <Text style={styles.infoText}>Current Quest:</Text>
+                <Text style={styles.infoText}>Defeat the {currentEnemyName}</Text>
+                <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>);
+        }
+        else if(randomEnemyNum == 1){
+            currentEnemyName = "Skeleton Crossbowman";
+            neededBattleTP = 15;
+            return(<SafeAreaView><Image source={require('./img/Skeleton_Crossbowman.png')}
+                resizeMode={'cover'} style={{ position: 'absolute', top: -180, left: 160, width: 150, height: 125 }} /><Text style={styles.infoText}>Current Quest:</Text>
+                <Text style={styles.infoText}>Defeat the {currentEnemyName}</Text>
+                <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>);
+        }
+        else if(randomEnemyNum == 2){
+            currentEnemyName = "Flaming Skull";
+            neededBattleTP = 8;
+            return(<SafeAreaView><Image source={require('./img/Skeleton_Flaming_Skull.png')}
+                resizeMode={'cover'} style={{ position: 'absolute', top: -180, left: 160, width: 150, height: 125 }} /><Text style={styles.infoText}>Current Quest:</Text>
+                <Text style={styles.infoText}>Defeat the {currentEnemyName}</Text>
+                <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>);
+        }
+        else if(randomEnemyNum == 3){
+            currentEnemyName = "Great Maceman";
+            neededBattleTP = 25;
+            return(<SafeAreaView><Image source={require('./img/Skeleton_Great_Maceman.png')}
+                resizeMode={'cover'} style={{ position: 'absolute', top: -180, left: 160, width: 150, height: 125 }} /><Text style={styles.infoText}>Current Quest:</Text>
+                <Text style={styles.infoText}>Defeat the {currentEnemyName}</Text>
+                <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>);
+        }
+        else if(randomEnemyNum == 4){
+            currentEnemyName = "Hooded Mage";
+            neededBattleTP = 15;
+            return(<SafeAreaView><Image source={require('./img/Skeleton_Mage_Hooded.png')}
+                resizeMode={'cover'} style={{ position: 'absolute', top: -180, left: 160, width: 150, height: 125 }} /><Text style={styles.infoText}>Current Quest:</Text>
+                <Text style={styles.infoText}>Defeat the {currentEnemyName}</Text>
+                <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>);
+        }
+        else if(randomEnemyNum == 5){
+            currentEnemyName = "Mage";
+            neededBattleTP = 12;
+            return(<SafeAreaView><Image source={require('./img/Skeleton_Mage.png')}
+                resizeMode={'cover'} style={{ position: 'absolute', top: -180, left: 160, width: 150, height: 125  }} /><Text style={styles.infoText}>Current Quest:</Text>
+                <Text style={styles.infoText}>Defeat the {currentEnemyName}</Text>
+                <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>);
+        }
+        else if(randomEnemyNum == 6){
+            currentEnemyName = "Royal Guard";
+            neededBattleTP = 22;
+            return(<SafeAreaView><Image source={require('./img/Skeleton_Royal_Guard.png')}
+                resizeMode={'cover'} style={{ position: 'absolute', top: -180, left: 160, width: 150, height: 125  }} /><Text style={styles.infoText}>Current Quest:</Text>
+                <Text style={styles.infoText}>Defeat the {currentEnemyName}</Text>
+                <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>);
+        }
+        else if(randomEnemyNum == 7){
+            currentEnemyName = "Armored Spearman";
+            neededBattleTP = 22;
+            return(<SafeAreaView><Image source={require('./img/Skeleton_Spearman_Armored.png')}
+                resizeMode={'cover'} style={{ position: 'absolute', top: -180, left: 160, width: 150, height: 125  }} /><Text style={styles.infoText}>Current Quest:</Text>
+                <Text style={styles.infoText}>Defeat the {currentEnemyName}</Text>
+                <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>);
+        }
+        else if(randomEnemyNum == 8){
+            currentEnemyName = "Spearman";
+            neededBattleTP = 18;
+            return(<SafeAreaView><Image source={require('./img/Skeleton_Spearman.png')}
+                resizeMode={'cover'} style={{ position: 'absolute', top: -180, left: 160, width: 150, height: 125  }} /><Text style={styles.infoText}>Current Quest:</Text>
+                <Text style={styles.infoText}>Defeat the {currentEnemyName}</Text>
+                <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>);
+        }
+        else if(randomEnemyNum == 9){
+            currentEnemyName = "Armored Swordsman";
+            neededBattleTP = 20;
+            return(<SafeAreaView><Image source={require('./img/Skeleton_Swordman_Armored.png')}
+                resizeMode={'cover'} style={{ position: 'absolute', top: -180, left: 160, width: 150, height: 125  }} /><Text style={styles.infoText}>Current Quest:</Text>
+                <Text style={styles.infoText}>Defeat the {currentEnemyName}</Text>
+                <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>);
+        }
+        else if(randomEnemyNum == 10){
+            currentEnemyName = "Swordman";
+            neededBattleTP = 15;
+            return(<SafeAreaView><Image source={require('./img/Skeleton_Swordman.png')}
+                resizeMode={'cover'} style={{ position: 'absolute', top: -180, left: 160, width: 150, height: 125  }} /><Text style={styles.infoText}>Current Quest:</Text>
+                <Text style={styles.infoText}>Defeat the {currentEnemyName}</Text>
+                <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>);
+        }
+        else{
+            currentEnemyName = "Skeleton Archer";
+            return(<SafeAreaView><Image source={require('./img/Skeleton_Archer.png')}
+                resizeMode={'cover'} style={{ position: 'absolute', top: -180, left: 160, width: 150, height: 125  }} /><Text style={styles.infoText}>Current Quest:</Text>
+                <Text style={styles.infoText}>Defeat the {currentEnemyName}</Text>
+                <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>);
+        }
+    }
+
     function MapBattleScreen() {
         if (inABattle) {
             return (
                 <TouchableOpacity onPress={() => {
                     notifyMessage("You must finish the current quest to return to the map screen.");
                 }}><SafeAreaView style={styles.container}>
-                <Image source={require('./img/new_battle.png')}
+                <Image source={require('./img/battle-bg.png')}
                     resizeMode={'cover'} style={{ width: windowWidth, height: imgHeight, margin: 20 }}
                 />
-                <Text style={styles.infoText}>Current Quest: Defeat Goblins</Text>
-                <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>
+                <Image source={require('./img/mainPlayer_battle.png')}
+                    resizeMode={'cover'} style={{ position: 'absolute', top: 60, left: -20, width: 225, height: 225 }} />
+                <GetRandomEnemy/>
+                </SafeAreaView>
                 <Animated.View
                 style={[styles.innerStyle, { width: ((battleTP/neededBattleTP)*100) + "%" },]}
                 />
@@ -66,6 +172,7 @@ const TaskComponent = ({ navigation }) => {
         if (inABattle) {
             if (battleTP >= neededBattleTP) {
                 inABattle = false;
+                enemyChosen = false;
                 battleTP = 0;
                 notifyMessage("You finished the quest!", "");
                 navigation.replace('Task');

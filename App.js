@@ -34,9 +34,12 @@ global.toDoList=[
 ];
 
 global.inABattle = false;
+global.enemyChosen = false;
+global.randomEnemyNum = 0;
 global.TotalTP = 0;
 global.battleTP = 0;
 global.neededBattleTP = 10;
+global.currentEnemyName = "goblin"
 
 global.finishedList=[];
 
