@@ -57,7 +57,7 @@ const AddTaskComponent = ({ navigation }) => {
                         />
                 </View>
                 <View>
-                    <Text>Enter TP value:</Text>
+                    <Text>Enter Task Point(TP) difficulty value:</Text>
                     <TextInput
                         style={styles.input}
                         onChangeText={onChangeTP}
@@ -68,7 +68,9 @@ const AddTaskComponent = ({ navigation }) => {
                 </View>
                 <TouchableOpacity style={styles.signinbutton}
                     onPress={() => {
-                        toDoList.push({key: taskName, value: parseInt(tp, 10)})
+                        toDoList.push({key: taskName, value: parseInt(tp, 10)});
+                        onChangeName(null);
+                        onChangeTP(null);
                         notifyMessage("Successful Add", taskName)
                     }}>
                     <Text style={{color: '#FFFFFF', fontSize: 18}}>ADD TASK</Text>
