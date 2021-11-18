@@ -73,6 +73,10 @@ const TaskComponent = ({ navigation }) => {
     function PrintInt(IntValue) {
         Alert.alert(IntValue.toString());
     }
+
+    function finishedBattle() {
+        Alert.alert("Battle Completed!")
+    }
        
     return (
         <SafeAreaView style={{ flex: 1 }}>
