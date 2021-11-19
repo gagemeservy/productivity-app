@@ -40,6 +40,15 @@ global.TotalTP = 0;
 global.battleTP = 0;
 global.neededBattleTP = 10;
 global.currentEnemyName = "goblin"
+global.playerLocation = "";
+global.wellAreaVisited = false;
+global.crystalAreaVisited = false;
+global.treeAreaVisited = false;
+global.caveAreaVisited = false;
+global.houseAreaVisited = false;
+global.tutorialGiven = false;
+global.skeletonKingBattle = false;
+global.skeletonKingBeat = false;
 
 global.finishedList=[];
 
