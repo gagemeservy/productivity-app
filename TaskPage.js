@@ -90,7 +90,7 @@ const TaskComponent = ({ navigation }) => {
             currentEnemyName = "Royal Guard";
             neededBattleTP = 22;
             return (<SafeAreaView><Image source={require('./img/Skeleton_Royal_Guard.png')}
-                resizeMode={'cover'} style={{ position: 'absolute', top: -180, left: 160, width: 150, height: 125 }} /><Text style={styles.infoText}>Current Quest:</Text>
+                resizeMode={'cover'} style={{ position: 'absolute', top: -230, left: 160, width: 150, height: 190 }} /><Text style={styles.infoText}>Current Quest:</Text>
                 <Text style={styles.infoText}>Defeat the {currentEnemyName}</Text>
                 <Text style={styles.infoText}>Progress: {battleTP} TP/{neededBattleTP} TP</Text></SafeAreaView>);
         }
@@ -149,7 +149,7 @@ const TaskComponent = ({ navigation }) => {
                             resizeMode={'cover'} style={{ position: 'absolute', top: 100, left: -20, width: 200, height: 200 }} />
                         <Image source={require('./img/villager5.png')}
                             resizeMode={'cover'} style={{ position: 'absolute', top: 100, left: 190, width: 170, height: 170 }} />
-                        <Text style={styles.infoText}>"Thank ye Cat Warrior! Ya saved my skin. But don't stop now. The Skeleton King's twin brother has kidnapped my twin brother!" (Tap To Continue)</Text>
+                        <Text style={styles.infoText}>"Thank ye Cat Warrior! Ya saved my skin. But don't stop now. The Skeleton King's twin brother has kidnapped my twin cousin!" (Tap To Continue)</Text>
                     </SafeAreaView>
                 </TouchableOpacity>);
         }
@@ -271,7 +271,7 @@ const TaskComponent = ({ navigation }) => {
                         <Image source={require('./img/villager6-2.png')}
                             resizeMode={'cover'} style={{ position: 'absolute', top: 130, left: 160, width: 200, height: 150 }} />
                             
-                        <Text style={styles.infoText}>"That Skeleton King could be hiding anywhere. Except here. He's not here. Keep your peepers peeled."(Tap To Continue)</Text>
+                        <Text style={styles.infoText}>"That Skeleton King could be hiding anywhere. Except here. He's not here. Keep your peepers peeled sonny."(Tap To Continue)</Text>
                     </SafeAreaView>
                 </TouchableOpacity>);
         }
@@ -292,7 +292,7 @@ const TaskComponent = ({ navigation }) => {
                         <Image source={require('./img/villager3.png')}
                             resizeMode={'cover'} style={{ position: 'absolute', top: 130, left: 190, width: 130, height: 150 }} />
                             
-                        <Text style={styles.infoText}> "The Skeleton King isn't in this creepy cave. Thank goodness..." (Tap To Continue)</Text>
+                        <Text style={styles.infoText}> "The Skeleton King isn't in this creepy cave. Thank goodness... he gives me the willies." (Tap To Continue)</Text>
                     </SafeAreaView>
                 </TouchableOpacity>);
         }
@@ -314,7 +314,7 @@ const TaskComponent = ({ navigation }) => {
                             resizeMode={'cover'} style={{ position: 'absolute', top: 100, left: -20, width: 200, height: 200 }} />
                         
                             
-                        <Text style={styles.infoText}>"Oh... hi again. I wasn't hiding in this tree... I was just looking for the Skeleton King. Have you found 'im yet?" (Tap To Continue)</Text>
+                        <Text style={styles.infoText}>"Oh... hi again. I wasn't hiding in this tree hehe... I was just looking for the Skeleton King. Have you found 'im yet?" (Tap To Continue)</Text>
                     </SafeAreaView>
                 </TouchableOpacity>);
         }
