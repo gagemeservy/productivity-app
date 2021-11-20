@@ -64,13 +64,14 @@ const styles = StyleSheet.create({
     },
     option: {
         alignItems: 'flex-start',
-        borderColor: 'black',
+        borderColor: '#42aeef',
         borderWidth: 1,
         borderRadius: 4
     },
     text: {
         margin: 20,
         fontSize: 20,
+        color: "#42aeef",
         fontWeight: 'bold'
     }
 });
