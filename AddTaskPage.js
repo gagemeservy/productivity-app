@@ -75,6 +75,10 @@ const AddTaskComponent = ({ navigation }) => {
                 </View>
                 <TouchableOpacity style={styles.signinbutton}
                     onPress={() => {
+                        if (tp === null || taskName === null) {
+                            notifyMessage("You must input a task name and a task point number");
+                            return;
+                        }
                         toDoList.push({key: taskName, value: parseInt(tp, 10)});
                         onChangeName(null);
                         onChangeTP(null);
