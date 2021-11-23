@@ -454,7 +454,6 @@ const TaskComponent = ({ navigation }) => {
                             }
                             doTPcalculations(item.value);
                             setState(!state)
-                            //navigation.replace('Task');
                         }}></TouchableOpacity>
                         <Text style={styles.itemText}>{item.key}</Text>
                     </View>

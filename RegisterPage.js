@@ -1,5 +1,5 @@
 import React from 'react'
-import {SafeAreaView, View, StyleSheet, TextInput, Button, Image, Text, TouchableOpacity} from "react-native";
+import {SafeAreaView, View, KeyboardAvoidingView, StyleSheet, TextInput, Button, Image, Text, TouchableOpacity, KeyboardAvoidingViewBase, Platform} from "react-native";
 
 const RegisterComponent = ({navigation}) => {
 
@@ -10,6 +10,9 @@ const RegisterComponent = ({navigation}) => {
 
     return (
         <SafeAreaView style={styles.container}>
+        <KeyboardAvoidingView
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
+                style={styles.container}>
             <Image source={require('./img/profileIcon.png')}
                 style={{width: 215, height: 215, margin: 20}}
             />
@@ -52,6 +55,7 @@ const RegisterComponent = ({navigation}) => {
                 }}>
                 <Text style={styles.extraText}>Already have an Account?</Text>
             </TouchableOpacity>
+            </KeyboardAvoidingView>
         </SafeAreaView>
     );
 };

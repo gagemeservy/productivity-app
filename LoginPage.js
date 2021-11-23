@@ -1,5 +1,5 @@
 import React from "react";
-import {SafeAreaView, View, StyleSheet, TextInput, Button, Image, Text, TouchableOpacity} from "react-native";
+import {SafeAreaView, View, KeyboardAvoidingView, StyleSheet, TextInput, Button, Image, Text, TouchableOpacity} from "react-native";
 
 const LoginComponent = ({navigation}) => {
     const [email, onChangeEmail] = React.useState(null);
@@ -7,6 +7,9 @@ const LoginComponent = ({navigation}) => {
 
     return (
         <SafeAreaView style={styles.container}>
+            <KeyboardAvoidingView
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
+                style={styles.container}>
             <Image source={require('./img/profileIcon.png')}
                 style={{width: 215, height: 215, margin: 20}}
             />
@@ -43,6 +46,7 @@ const LoginComponent = ({navigation}) => {
                 title="Go back to home"
                 onPress={() =>
                     navigation.replace('Home')}/>
+            </KeyboardAvoidingView>
         </SafeAreaView>
     );
 };

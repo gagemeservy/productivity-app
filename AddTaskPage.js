@@ -1,12 +1,15 @@
 import React from 'react'
 import {SafeAreaView, View, StyleSheet, TextInput, Modal, Text, TouchableOpacity, Alert} from "react-native";
 import Icon from 'react-native-vector-icons/Octicons'
+import ModalDropdown from 'react-native-modal-dropdown'
 import { ModalPicker } from './ModalPicker';
 const AddTaskComponent = ({ navigation }) => {
     const [taskName, onChangeName] = React.useState(null);
     const [tp, onChangeTP] = React.useState(null);
     const [chooseData, setchooseData] = React.useState('Select item...');
     const [isModalVisible, setisModalVisible] = React.useState(false);
+    const dropdown = React.useRef(null);
+    
     const changeModalVisibilty = (bool) => {
         setisModalVisible(bool)
     }
@@ -55,23 +58,28 @@ const AddTaskComponent = ({ navigation }) => {
                         onChangeText={onChangeName}
                         value={taskName}
                         />
-                </View>
-                <View>
+                
+
                     <Text>Enter Task Point(TP) difficulty value:</Text>
-                    <TextInput
-                        style={styles.input}
-                        onChangeText={onChangeTP}
-                        value={tp}
-                        numeric
-                        keyboardType="numeric"
-                    />
+                    <ModalDropdown
+                        ref={dropdown}
+                        style={styles.tp_input}
+                        dropdownStyle={styles.dropdown}
+                        textStyle={styles.dropdown_text}
+                        defaultIndex={-1}
+                        defaultValue={'Please select...'}
+                        options={['1', '2', '3', '4', '5']}
+                        onSelect={(index, value) => onChangeTP(value)}
+                    >
+                    </ModalDropdown>
                 </View>
                 <TouchableOpacity style={styles.signinbutton}
                     onPress={() => {
                         toDoList.push({key: taskName, value: parseInt(tp, 10)});
                         onChangeName(null);
                         onChangeTP(null);
-                        notifyMessage("Successful Add", taskName)
+                        dropdown.current.select(-1);
+                        notifyMessage("Successful Added", taskName)
                     }}>
                     <Text style={{color: '#FFFFFF', fontSize: 18}}>ADD TASK</Text>
                 </TouchableOpacity>
@@ -100,6 +108,25 @@ const styles = StyleSheet.create({
         borderColor: '#E7E7E7',
         borderRadius: 22,
         padding: 10,
+    },
+    tp_input: {
+        height: 40,
+        width: 308,
+        margin: 12,
+        backgroundColor: '#71A0FC',
+        borderRadius: 22,
+        padding: 10,
+    },
+    dropdown: {
+        width: 308,
+        marginTop: 12,
+        borderWidth: 1,
+        borderColor: '#E7E7E7',
+        borderRadius: 22,
+    },
+    dropdown_text: {
+        color: '#FFFFFF',
+        fontSize: 18,
     },
     signinbutton: {
         height: 50,
