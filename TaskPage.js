@@ -417,6 +417,15 @@ const TaskComponent = ({ navigation }) => {
         Alert.alert(IntValue.toString());
     }
 
+    function AddTaskButton() {
+        return (
+            <TouchableOpacity style={styles.addTaskButton} onPress={() =>
+                navigation.replace("Add")}>
+                    <Icon name='plus' size={30} color='#FFF'/>
+                </TouchableOpacity>
+        )
+    }
+
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.topBar}>
@@ -443,6 +452,7 @@ const TaskComponent = ({ navigation }) => {
             <FlatList
                 extraData={state}
                 data={toDoList}
+                ListFooterComponent={<AddTaskButton/>}
                 renderItem={({ item }) => <View style={styles.item}>
                     <View style={styles.itemLeft}>
                         <TouchableOpacity style={styles.square} onPress={() => {
@@ -459,7 +469,7 @@ const TaskComponent = ({ navigation }) => {
                     </View>
                     <View style={styles.circular}><Text>TP : {item.value}</Text></View>
                 </View>}
-            />
+            />          
         </SafeAreaView>
     );
 };
@@ -557,6 +567,17 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#55BCF6',
         paddingBottom: 5
+    },
+    addTaskButton: {
+        backgroundColor: '#87D77A',
+        padding: 15,
+        borderRadius: 10,
+        alignItems: 'center',
+        marginBottom: 10
+    },
+    addTaskButtonText: {
+        color: '#FFFFFF',
+        fontSize: 32
     }
 });
 
