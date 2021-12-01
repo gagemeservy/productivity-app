@@ -65,6 +65,7 @@ const AddTaskComponent = ({ navigation }) => {
                         ref={dropdown}
                         style={styles.tp_input}
                         dropdownStyle={styles.dropdown}
+                        dropdownTextStyle={styles.list_text}
                         textStyle={styles.dropdown_text}
                         defaultIndex={-1}
                         defaultValue={'Please select...'}
@@ -114,7 +115,7 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     tp_input: {
-        height: 40,
+        height: 55,
         width: 308,
         margin: 12,
         backgroundColor: '#71A0FC',
@@ -126,10 +127,13 @@ const styles = StyleSheet.create({
         marginTop: 12,
         borderWidth: 1,
         borderColor: '#E7E7E7',
-        borderRadius: 22,
     },
     dropdown_text: {
         color: '#FFFFFF',
+        fontSize: 18,
+    },
+    list_text: {
+        color: '#71A0FC',
         fontSize: 18,
     },
     signinbutton: {
