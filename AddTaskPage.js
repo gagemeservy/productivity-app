@@ -34,7 +34,7 @@ const AddTaskComponent = ({ navigation }) => {
                 <TouchableOpacity style={styles.menu}
                     onPress={() => {changeModalVisibilty(true)}}
                     >
-                        <Icon name='three-bars' size={30} color='#000'/>
+                        <Icon name='three-bars' size={45} color='#000'/>
                 </TouchableOpacity>   
             <Modal
                 transparent={true}
