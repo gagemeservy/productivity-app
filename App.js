@@ -69,7 +69,6 @@ class App extends Component {
         <Stack.Navigator screenOptions={{headerShown: false}}>
           <Stack.Screen name="Home"
             component={HomeScreen}
-            
             />
             <Stack.Screen name="Login" component={LoginComponent}/>
             <Stack.Screen name="Register" component={RegisterComponent}/>

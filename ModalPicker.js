@@ -3,17 +3,14 @@ import {
     StyleSheet, Text, View, TouchableOpacity, Dimensions, ScrollView
 } from 'react-native'
 
-const OPTIONS = ['Tasks', 'Logout', 'Completed Tasks', 'Add Task'];
+const OPTIONS = ['Tasks','Completed Tasks', 'Add Task'];
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 const ModalPicker = (props, { navigation }) => {
     const onPressItem = (option) => {
         props.changeModalVisibilty(false);
         props.setData(option);
-        if(option == "Logout"){
-            option = "Home";
-        }
-        else if(option == "Tasks"){
+        if(option == "Tasks"){
             option = "Task";
         }
         else if(option == "Completed Tasks") {
@@ -37,6 +34,7 @@ const ModalPicker = (props, { navigation }) => {
             </TouchableOpacity>
         )
     })
+
     return (
         <TouchableOpacity
             onPress={() => props.changeModalVisibilty(false)}

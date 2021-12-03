@@ -27,6 +27,11 @@ const finishedTaskComponent = ({navigation}) => {
                 onPress={() => {changeModalVisibilty(true)}}
                 >
                     <Icon name='three-bars' size={45} color='#000'/>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.menu}
+                    onPress={() => {navigation.replace('Home')}}
+                >
+                    <Icon name='sign-out' size={45} color='#000' />
             </TouchableOpacity>   
         <Modal
             transparent={true}
@@ -65,7 +70,9 @@ const styles = StyleSheet.create({
     menu: {
         paddingTop: 10,
         alignItems: 'flex-start',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
+        paddingEnd: 10,
+        paddingStart: 10,
     },
     itemLeft: {
         flexDirection: 'row',
@@ -101,7 +108,8 @@ const styles = StyleSheet.create({
     topBar: {
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
-        margin: 12
+        margin: 12,
+        flexDirection: 'row'
     },
     itemText: {
         maxWidth: '100%',
