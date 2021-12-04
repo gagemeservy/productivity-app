@@ -21,11 +21,7 @@ const AddTaskComponent = ({ navigation }) => {
     }
 
     function notifyMessage(title, msg) {
-        if (Platform.OS == 'android') {
-            ToastAndroid.show(msg, ToastAndroid.SHORT)
-        } else {
-            Alert.alert(title, msg);
-        }
+        Alert.alert(title, msg);
     }
 
     return (
@@ -167,6 +163,11 @@ const styles = StyleSheet.create({
         fontSize: 38,
         fontWeight: 'bold',
         color: '#FFFFFF'
+    },
+    droidSafeArea: {
+        flex: 1,
+        backgroundColor: `#f6f6f6`,
+        paddingTop: Platform.OS === 'android' ? 25 : 0
     }
 });
 

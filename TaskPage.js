@@ -24,11 +24,7 @@ const TaskComponent = ({ navigation }) => {
     }
 
     function notifyMessage(title, msg) {
-        if (Platform.OS == 'android') {
-            ToastAndroid.show(msg, ToastAndroid.SHORT)
-        } else {
-            Alert.alert(title, msg);
-        }
+        Alert.alert(title, msg);
     }
 
     function GetCheckMarkCave() {
@@ -395,7 +391,7 @@ const TaskComponent = ({ navigation }) => {
                 notifyMessage("Enemies are attacking you on your way to the next area!");
                 }
             }}><Image source={require('./img/tree1.png')}
-                resizeMode={'cover'} style={{ position: 'absolute', top: -280, left: -40, width: 70, height: 115 }} />
+                resizeMode={'cover'} style={{position: 'absolute', top: -280, left: -40, width: 70, height: 115 }} />
                 <GetCheckMarkTree /></TouchableOpacity>
             <TouchableOpacity onPress={() => {
                 if(caveAreaVisited){
@@ -438,6 +434,7 @@ const TaskComponent = ({ navigation }) => {
             }}><Image source={require('./img/crystal1.png')}
                 resizeMode={'cover'} style={{ position: 'absolute', top: -160, left: -190, width: 130, height: 110 }} />
                 <GetCheckMarkCrystal /></TouchableOpacity>
+            <View>
             <TouchableOpacity onPress={() => {
                 if(wellAreaVisited){
                     notifyMessage("You've already been to this area!");
@@ -451,6 +448,7 @@ const TaskComponent = ({ navigation }) => {
             }}><Image source={require('./img/well.png')}
                 resizeMode={'cover'} style={{ position: 'absolute', top: -280, left: -180, width: 70, height: 70 }} />
                 <GetCheckMarkWell /></TouchableOpacity>
+            </View>
             {/*These images below are just for show*/}
             <Image source={require('./img/bush1.png')}
                 resizeMode={'cover'} style={{ position: 'absolute', top: 70, left: 110, width: 30, height: 23 }} />
@@ -514,7 +512,7 @@ const TaskComponent = ({ navigation }) => {
     }
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={ /*{ flex: 1 }*/ styles.droidSafeArea }>
             <View style={styles.topBar}>
 
                 <TouchableOpacity style={styles.menu}
@@ -678,6 +676,11 @@ const styles = StyleSheet.create({
     addTaskButtonText: {
         color: '#FFFFFF',
         fontSize: 32
+    },
+    droidSafeArea: {
+        flex: 1,
+        backgroundColor: `#f6f6f6`,
+        paddingTop: Platform.OS === 'android' ? 25 : 0
     }
 });
 
