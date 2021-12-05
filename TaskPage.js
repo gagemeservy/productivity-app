@@ -709,20 +709,21 @@ const styles = StyleSheet.create({
     },
     flex_container_item2: {
         backgroundColor: "#8be78b",
-        margin: 30,
+        margin: 15,
         padding: 20,
         alignItems: "center",
-        width: 80,
+        width: 95,
         height: 160
     },
     flex_container_item3: {
         backgroundColor: "#8be78b",
-        margin: 20,
+        margin: 12,
         padding: 20,
         alignItems: "center",
         width: 145,
         height: 110
     }
+
 });
 
 export default TaskComponent;
