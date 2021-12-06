@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, TouchableOpacity, Animated, FlatList, SafeAreaView, View, StyleSheet, TextInput, Button, Image, Text, Dimensions, NavigationContainer, Platform, ToastAndroid, Alert } from "react-native";
+import { Modal, Animated, FlatList, SafeAreaView, View, StyleSheet, TextInput, Button, Image, Text, TouchableOpacity, Dimensions, NavigationContainer, Platform, ToastAndroid, Alert } from "react-native";
 import { ModalPicker } from './ModalPicker';
 import Icon from 'react-native-vector-icons/Octicons';
 import { ScreenStackHeaderRightView } from "react-native-screens";
@@ -29,8 +29,7 @@ const TaskComponent = ({ navigation }) => {
 
     function GetCheckMarkCave() {
         if(caveAreaVisited){
-            //return(<Icon name='check' size={100} color='green' style={{ position: 'absolute', top: -300, left: 120, width: 110, height: 90 }} />);
-            return null;
+            return(<Icon name='check' size={100} color='green' style={{ position: 'absolute', top: -300, left: 120, width: 110, height: 90 }} />);
         }
         else{
             return null;
@@ -39,8 +38,7 @@ const TaskComponent = ({ navigation }) => {
 
     function GetCheckMarkTree() {
         if(treeAreaVisited){
-            //return(<Icon name='check' size={100} color='green' style={{ position: 'absolute', top: -280, left: -40, width: 110, height: 90 }} />);
-            return null;
+            return(<Icon name='check' size={100} color='green' style={{ position: 'absolute', top: -280, left: -40, width: 110, height: 90 }} />);
         }
         else{
             return null;
@@ -49,8 +47,7 @@ const TaskComponent = ({ navigation }) => {
 
     function GetCheckMarkHouse() {
         if(houseAreaVisited){
-            //return(<Icon name='check' size={100} color='green' style={{ position: 'absolute', top: -160, left: 50, width: 110, height: 90 }} />);
-            return null;
+            return(<Icon name='check' size={100} color='green' style={{ position: 'absolute', top: -160, left: 50, width: 110, height: 90 }} />);
         }
         else{
             return null;
@@ -59,8 +56,7 @@ const TaskComponent = ({ navigation }) => {
 
     function GetCheckMarkWell() {
         if(wellAreaVisited){
-            //return(<Icon name='check' size={100} color='green' style={{ position: 'absolute', top: -300, left: -180, width: 110, height: 90 }} />);
-            return null;
+            return(<Icon name='check' size={100} color='green' style={{ position: 'absolute', top: -300, left: -180, width: 110, height: 90 }} />);
         }
         else{
             return null;
@@ -69,8 +65,7 @@ const TaskComponent = ({ navigation }) => {
 
     function GetCheckMarkCrystal() {
         if(crystalAreaVisited){
-            //return(<Icon name='check' size={100} color='green' style={{ position: 'absolute', top: -160, left: -150, width: 110, height: 90 }} />);
-            return null;
+            return(<Icon name='check' size={100} color='green' style={{ position: 'absolute', top: -160, left: -150, width: 110, height: 90 }} />);
         }
         else{
             return null;
@@ -380,24 +375,10 @@ const TaskComponent = ({ navigation }) => {
                 </SafeAreaView>);
         }
         return (<SafeAreaView style={styles.container}>
-            {/*<Image source={require('./img/map-BG.png')}
-                resizeMode={'cover'} style={{ width: windowWidth, height: imgHeight, margin: 20, zIndex: -2}}
-        />*/}
+            <Image source={require('./img/map-BG.png')}
+                resizeMode={'cover'} style={{ width: windowWidth, height: imgHeight, margin: 20 }}
+            />
             {/*These are all the locations the player must travel to*/}
-            <View style={styles.flex_container}>
-            <TouchableOpacity onPress={() => {
-                if(wellAreaVisited){
-                    notifyMessage("You've already been to this area!");
-                }
-                else{
-                inABattle = true;
-                neededBattleTP = 10;
-                playerLocation = "well";
-                navigation.replace('Task');
-                notifyMessage("Enemies are attacking you on your way to the next area!");}
-            }}><Image source={require('./img/well.png')}
-                resizeMode={'cover'} style={styles.flex_container_item1} />
-                <GetCheckMarkWell /></TouchableOpacity>
             <TouchableOpacity onPress={() => {
                 if(treeAreaVisited){
                     notifyMessage("You've already been to this area!");
@@ -410,7 +391,7 @@ const TaskComponent = ({ navigation }) => {
                 notifyMessage("Enemies are attacking you on your way to the next area!");
                 }
             }}><Image source={require('./img/tree1.png')}
-                resizeMode={'cover'} style={styles.flex_container_item2} />
+                resizeMode={'cover'} style={{position: 'absolute', top: -280, left: -40, width: 70, height: 115 }} />
                 <GetCheckMarkTree /></TouchableOpacity>
             <TouchableOpacity onPress={() => {
                 if(caveAreaVisited){
@@ -423,7 +404,7 @@ const TaskComponent = ({ navigation }) => {
                 navigation.replace('Task');
                 notifyMessage("Enemies are attacking you on your way to the next area!");}
             }}><Image source={require('./img/Cave_enter.png')}
-                resizeMode={'cover'} style={styles.flex_container_item3} />
+                resizeMode={'cover'} style={{ position: 'absolute', top: -300, left: 100, width: 110, height: 90 }} />
                 <GetCheckMarkCave />
                 </TouchableOpacity>
             <TouchableOpacity onPress={() => {
@@ -437,7 +418,7 @@ const TaskComponent = ({ navigation }) => {
                 navigation.replace('Task');
                 notifyMessage("Enemies are attacking you on your way to the next area!");}
             }}><Image source={require('./img/house1.png')}
-                resizeMode={'cover'} style={styles.flex_container_item1} />
+                resizeMode={'cover'} style={{ position: 'absolute', top: -160, left: 50, width: 80, height: 110 }} />
             <GetCheckMarkHouse />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {
@@ -451,12 +432,25 @@ const TaskComponent = ({ navigation }) => {
                 navigation.replace('Task');
                 notifyMessage("Enemies are attacking you on your way to the next area!");}
             }}><Image source={require('./img/crystal1.png')}
-                resizeMode={'cover'} style={styles.flex_container_item3} />
+                resizeMode={'cover'} style={{ position: 'absolute', top: -160, left: -190, width: 130, height: 110 }} />
                 <GetCheckMarkCrystal /></TouchableOpacity>
+            <View>
+            <TouchableOpacity onPress={() => {
+                if(wellAreaVisited){
+                    notifyMessage("You've already been to this area!");
+                }
+                else{
+                inABattle = true;
+                neededBattleTP = 10;
+                playerLocation = "well";
+                navigation.replace('Task');
+                notifyMessage("Enemies are attacking you on your way to the next area!");}
+            }}><Image source={require('./img/well.png')}
+                resizeMode={'cover'} style={{ position: 'absolute', top: -280, left: -180, width: 70, height: 70 }} />
+                <GetCheckMarkWell /></TouchableOpacity>
             </View>
-            
             {/*These images below are just for show*/}
-            {/*<Image source={require('./img/bush1.png')}
+            <Image source={require('./img/bush1.png')}
                 resizeMode={'cover'} style={{ position: 'absolute', top: 70, left: 110, width: 30, height: 23 }} />
             <Image source={require('./img/bush2.png')}
                 resizeMode={'cover'} style={{ position: 'absolute', top: 190, left: 180, width: 40, height: 30 }} />
@@ -467,7 +461,7 @@ const TaskComponent = ({ navigation }) => {
             <Image source={require('./img/rock3.png')}
                 resizeMode={'cover'} style={{ position: 'absolute', top: 210, left: 380, width: 20, height: 13 }} />
             <Image source={require('./img/ruins2.png')}
-        resizeMode={'cover'} style={{ position: 'absolute', top: 100, left: 20, width: 30, height: 30 }} />*/}
+                resizeMode={'cover'} style={{ position: 'absolute', top: 100, left: 20, width: 30, height: 30 }} />
             <Text style={styles.infoText}>World Map</Text>
             <Text style={styles.infoText}>Tap A Location To Travel To</Text>
         </SafeAreaView>);
@@ -687,43 +681,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: `#f6f6f6`,
         paddingTop: Platform.OS === 'android' ? 25 : 0
-    },
-
-    flex_container: {
-        display: "flex",
-        flexWrap: "wrap",
-        backgroundColor: "#8be78b",
-        width: "100%",
-        flexDirection: "row",
-        alignContent: "center",
-        alignItems: "center"
-      },
-      
-    flex_container_item1: {
-        backgroundColor: "#8be78b",
-        margin: 12,
-        padding: 20,
-        alignItems: "center",
-        width: 90,
-        height: 110
-    },
-    flex_container_item2: {
-        backgroundColor: "#8be78b",
-        margin: 15,
-        padding: 20,
-        alignItems: "center",
-        width: 95,
-        height: 160
-    },
-    flex_container_item3: {
-        backgroundColor: "#8be78b",
-        margin: 12,
-        padding: 20,
-        alignItems: "center",
-        width: 145,
-        height: 110
     }
-
 });
 
 export default TaskComponent;
