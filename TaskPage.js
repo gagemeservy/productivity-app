@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/Octicons';
 import { ScreenStackHeaderRightView } from "react-native-screens";
 import { ScrollView } from "react-native-gesture-handler";
 import { color } from "react-native-reanimated";
+import { showMessage, hideMessage } from "react-native-flash-message";
 
 const TaskComponent = ({ navigation }) => {
     const windowWidth = Dimensions.get('window').width;
@@ -518,12 +519,12 @@ const TaskComponent = ({ navigation }) => {
                 <TouchableOpacity style={styles.menu}
                     onPress={() => { changeModalVisibilty(true) }}
                 >
-                    <Icon name='three-bars' size={45} color='#000' />
+                    <Icon name='three-bars' size={45} color='#55BCF6' />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.menu}
                     onPress={() => {navigation.replace('Home')}}
                 >
-                    <Icon name='sign-out' size={45} color='#000' />
+                    <Icon name='sign-out' size={43} color='#55BCF6' />
                 </TouchableOpacity>
                 <Modal
                     transparent={true}
@@ -546,14 +547,19 @@ const TaskComponent = ({ navigation }) => {
                 renderItem={({ item }) => <View style={styles.item}>
                     <View style={styles.itemLeft}>
                         <TouchableOpacity style={styles.square} onPress={() => {
-                            notifyMessage("Completed!", item.key)
+                            //notifyMessage("Completed!", item.key)
+                            showMessage({
+                                message: "Task Completed!",
+                                description: item.key,
+                                type: "info",
+                            });
                             finishedList.push(item)
                             var index = toDoList.indexOf(item);
                             if (index !== -1) {
                                 toDoList.splice(index, 1)
                             }
                             doTPcalculations(item.value);
-                            setState(!state)
+                            //setState(!state);
                         }}></TouchableOpacity>
                         <Text style={styles.itemText}>{item.key}</Text>
                     </View>
@@ -572,11 +578,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     menu: {
-        paddingTop: 10,
+        paddingTop: 15,
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
-        paddingEnd: 10,
-        paddingStart: 10,
+        paddingEnd: 15,
+        paddingStart: 15,
+        color: '#E7E7E7'
     },
     itemLeft: {
         flexDirection: 'row',

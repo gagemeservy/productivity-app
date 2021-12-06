@@ -10,6 +10,7 @@ import { ModalPicker } from './ModalPicker';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import finishedTaskComponent from './CompleteTaskPage';
 import AddTaskComponent from './AddTaskPage';
+import FlashMessage from "react-native-flash-message";
 
 const Stack = createNativeStackNavigator();
 
@@ -77,6 +78,7 @@ class App extends Component {
             <Stack.Screen name="ModalPicker" component={ModalPicker}/>
             <Stack.Screen name="Finished" component={finishedTaskComponent}/>
         </Stack.Navigator>
+        <FlashMessage position="top" />
       </NavigationContainer>
     );
   }
