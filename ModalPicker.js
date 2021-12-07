@@ -58,18 +58,21 @@ const styles = StyleSheet.create({
     },
     modal: {
         backgroundColor: 'white',
-        borderRadius: 10
+        borderRadius: 40
     },
     option: {
-        alignItems: 'flex-start',
-        borderColor: '#42aeef',
+        alignItems: 'center',
+        borderColor: '#71A0FC',
         borderWidth: 1,
-        borderRadius: 4
+        borderRadius: 4,
+        borderRadius: 100,
+        margin: 10,
+        backgroundColor: "#71A0FC",
     },
     text: {
         margin: 20,
         fontSize: 20,
-        color: "#42aeef",
+        color: "white",
         fontWeight: 'bold'
     }
 });

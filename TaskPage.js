@@ -189,7 +189,7 @@ const TaskComponent = ({ navigation }) => {
                     <Image source={require('./img/villager5.png')}
                         resizeMode={'cover'} style={{ position: 'absolute', top: 100, left: 190, width: 170, height: 170 }} />
                     <Text style={styles.infoText}>"Thank ye Cat Warrior! Ya saved my skin. But don't stop now. The Skeleton King's twin brother has kidnapped my twin cousin!" - Pirate Captain </Text>
-                    <TouchableOpacity style={styles.signinbutton} onPress={() => {
+                    <TouchableOpacity style={styles.continuebutton} onPress={() => {
                         skeletonKingBeat = false;
                         navigation.replace('Task');
                     }}>
@@ -234,7 +234,7 @@ const TaskComponent = ({ navigation }) => {
                     <Image source={require('./img/villager4.png')}
                         resizeMode={'cover'} style={{ position: 'absolute', top: 100, left: 190, width: 170, height: 170 }} />
                     <Text style={styles.infoText}>"Cat Warrior we need your help! Our pirate captain has been kidnapped by the scary Skeleton King. We don't know where he is though. Travel to each location to find him. Mark off tasks that you accomplish in the real world in order to fight the forces of evil! Hurry!" - Scared Pirate</Text>
-                    <TouchableOpacity style={styles.signinbutton} onPress={() => {
+                    <TouchableOpacity style={styles.continuebutton} onPress={() => {
                         tutorialGiven = true;
                         navigation.replace('Task');
                     }}>
@@ -254,10 +254,10 @@ const TaskComponent = ({ navigation }) => {
                         <Image source={require('./img/catFighter.gif')}
                             resizeMode={'cover'} style={{ position: 'absolute', top: 100, left: -20, width: 200, height: 200 }} />
                         <GetRandomEnemy />
-                    </SafeAreaView>
+                    </SafeAreaView><View style={styles.progBarOutline}>
                     <Animated.View
                         style={[styles.innerStyle, { width: ((battleTP / neededBattleTP) * 100) + "%" },]}
-                    />
+                    /></View>
                 </TouchableOpacity>);
         }
         if (playerLocation == "well") {
@@ -273,7 +273,7 @@ const TaskComponent = ({ navigation }) => {
                     <Image source={require('./img/villager1.png')}
                         resizeMode={'cover'} style={{ position: 'absolute', top: 130, left: 250, width: 130, height: 130 }} />
                     <Text style={styles.infoText}>"The Skeleton King's lucky he isn't here or I'd take 'im out with this big bomb on my back. Keep looking!" - Bomb Pirate </Text>
-                    <TouchableOpacity style={styles.signinbutton} onPress={() => {
+                    <TouchableOpacity style={styles.continuebutton} onPress={() => {
                         playerLocation = "";
                         wellAreaVisited = true;
                         navigation.replace('Task');
@@ -296,7 +296,7 @@ const TaskComponent = ({ navigation }) => {
                         resizeMode={'cover'} style={{ position: 'absolute', top: 130, left: 210, width: 130, height: 150 }} />
 
                     <Text style={styles.infoText}>"Arrgh! I'd chase down that Skeleton King if I had me good leg. Go get 'im fer me!" - Peg Leg Pirate</Text>
-                    <TouchableOpacity style={styles.signinbutton} onPress={() => {
+                    <TouchableOpacity style={styles.continuebutton} onPress={() => {
                         playerLocation = "";
                         houseAreaVisited = true;
                         navigation.replace('Task');
@@ -319,7 +319,7 @@ const TaskComponent = ({ navigation }) => {
                         resizeMode={'cover'} style={{ position: 'absolute', top: 130, left: 160, width: 200, height: 150 }} />
 
                     <Text style={styles.infoText}>"That Skeleton King could be hiding anywhere. Except here. He's not here. Keep your peepers peeled sonny." - Whale</Text>
-                    <TouchableOpacity style={styles.signinbutton} onPress={() => {
+                    <TouchableOpacity style={styles.continuebutton} onPress={() => {
                         playerLocation = "";
                         crystalAreaVisited = true;
                         navigation.replace('Task');
@@ -342,7 +342,7 @@ const TaskComponent = ({ navigation }) => {
                         resizeMode={'cover'} style={{ position: 'absolute', top: 130, left: 190, width: 130, height: 150 }} />
 
                     <Text style={styles.infoText}> "The Skeleton King isn't in this creepy cave. Thank goodness... he gives me the willies." - Pickle Pirate </Text>
-                    <TouchableOpacity style={styles.signinbutton} onPress={() => {
+                    <TouchableOpacity style={styles.continuebutton} onPress={() => {
                         playerLocation = "";
                         caveAreaVisited = true;
                         navigation.replace('Task');
@@ -366,7 +366,7 @@ const TaskComponent = ({ navigation }) => {
 
 
                     <Text style={styles.infoText}>"Oh... hi again. I wasn't hiding in this tree hehe... I was just looking for the Skeleton King. Have you found 'im yet?" - Scared Pirate</Text>
-                    <TouchableOpacity style={styles.signinbutton} onPress={() => {
+                    <TouchableOpacity style={styles.continuebutton} onPress={() => {
                         playerLocation = "";
                         treeAreaVisited = true;
                         navigation.replace('Task');
@@ -524,12 +524,12 @@ const TaskComponent = ({ navigation }) => {
                 <TouchableOpacity style={styles.menu}
                     onPress={() => { changeModalVisibilty(true) }}
                 >
-                    <Icon name='three-bars' size={45} color='#55BCF6' />
+                    <Icon name='three-bars' size={45} color='#71A0FC' />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.menu}
                     onPress={() => {navigation.replace('Home')}}
                 >
-                    <Icon name='sign-out' size={43} color='#55BCF6' />
+                    <Icon name='sign-out' size={43} color='#71A0FC' />
                 </TouchableOpacity>
                 <Modal
                     transparent={true}
@@ -545,6 +545,7 @@ const TaskComponent = ({ navigation }) => {
             <SafeAreaView>
                 <MapBattleScreen />
             </SafeAreaView>
+            <View style={styles.title}><Text style={styles.subtitleText}>TASKS</Text></View>
             <FlatList
                 extraData={state}
                 data={toDoList}
@@ -617,7 +618,7 @@ const styles = StyleSheet.create({
     square: {
         width: 45,
         height: 45,
-        backgroundColor: '#55BCF6',
+        backgroundColor: '#71A0FC',
         opacity: 0.4,
         borderRadius: 5,
         marginRight: 15
@@ -641,6 +642,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    continuebutton: {
+        height: 50,
+        width: 308,
+        margin: 12,
+        backgroundColor: '#55BCF6',
+        borderRadius: 22,
+        color: '#FFFFFF',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     buttons: {
         alignItems: 'center',
         justifyContent: 'center',
@@ -657,7 +668,7 @@ const styles = StyleSheet.create({
     topBar: {
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     itemText: {
         maxWidth: '80%',
@@ -665,7 +676,7 @@ const styles = StyleSheet.create({
     circular: {
         width: 64,
         height: 30,
-        borderColor: '#55BCF6',
+        borderColor: '#71A0FC',
         borderWidth: 2,
         borderRadius: 6,
         alignItems: 'center'
@@ -673,14 +684,14 @@ const styles = StyleSheet.create({
     innerStyle: {
         width: "100%",
         height: 31,
-        borderRadius: 16,
+        borderRadius: 2,
         backgroundColor: "#42aeef",
     },
     infoText: {
         fontSize: 16,
         fontWeight: 'bold',
         color: '#55BCF6',
-        padding: 15,
+        paddingBottom: 4,
     },
     battleText: {
         fontSize: 16,
@@ -701,8 +712,25 @@ const styles = StyleSheet.create({
     },
     droidSafeArea: {
         flex: 1,
-        backgroundColor: `#f6f6f6`,
-        paddingTop: Platform.OS === 'android' ? 25 : 0
+        backgroundColor: `#dbf0fd`,
+        paddingTop: Platform.OS === 'android' ? 25 : 0,
+    },title: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#71A0FC',
+        marginTop: 5
+    },
+    subtitleText: {
+        fontSize: 26,
+        fontWeight: 'bold',
+        color: '#FFFFFF'
+    }
+    ,
+    progBarOutline: {
+        borderWidth: 10,
+        borderColor: "#42aeef",
+        margin: 5,
+        borderRadius: 25,
     }
 });
 

@@ -21,17 +21,17 @@ const finishedTaskComponent = ({navigation}) => {
     }
 
  return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={ /*{ flex: 1 }*/ styles.droidSafeArea }>
     <View style={styles.topBar}>
             <TouchableOpacity style={styles.menu}
                 onPress={() => {changeModalVisibilty(true)}}
                 >
-                    <Icon name='three-bars' size={45} color='#000'/>
+                    <Icon name='three-bars' size={45} color='#71A0FC'/>
             </TouchableOpacity>
             <TouchableOpacity style={styles.menu}
                     onPress={() => {navigation.replace('Home')}}
                 >
-                    <Icon name='sign-out' size={45} color='#000' />
+                    <Icon name='sign-out' size={45} color='#71A0FC' />
             </TouchableOpacity>   
         <Modal
             transparent={true}
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     circular: {
         width: 64,
         height: 30,
-        borderColor: '#55BCF6',
+        borderColor: '#71A0FC',
         borderWidth: 2,
         borderRadius: 6,
         alignItems: 'center'
@@ -136,6 +136,11 @@ const styles = StyleSheet.create({
         fontSize: 26,
         fontWeight: 'bold',
         color: '#FFFFFF'
+    },
+    droidSafeArea: {
+        flex: 1,
+        backgroundColor: `#dbf0fd`,
+        paddingTop: Platform.OS === 'android' ? 25 : 0
     }
 });
 

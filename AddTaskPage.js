@@ -25,17 +25,17 @@ const AddTaskComponent = ({ navigation }) => {
     }
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={ /*{ flex: 1 }*/ styles.droidSafeArea }>
             <View style={styles.topBar}>
                 <TouchableOpacity style={styles.menu}
                     onPress={() => {changeModalVisibilty(true)}}
                     >
-                        <Icon name='three-bars' size={45} color='#000'/>
+                        <Icon name='three-bars' size={45} color='#71A0FC'/>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.menu}
                     onPress={() => {navigation.replace('Home')}}
                 >
-                    <Icon name='sign-out' size={45} color='#000' />
+                    <Icon name='sign-out' size={45} color='#71A0FC' />
                 </TouchableOpacity>  
             <Modal
                 transparent={true}
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
         width: 308,
         margin: 12,
         borderWidth: 1,
-        borderColor: '#E7E7E7',
+        borderColor: '#71A0FC',
         borderRadius: 22,
         padding: 10,
     },
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
     },
     droidSafeArea: {
         flex: 1,
-        backgroundColor: `#f6f6f6`,
+        backgroundColor: `#dbf0fd`,
         paddingTop: Platform.OS === 'android' ? 25 : 0
     }
 });
