@@ -498,6 +498,11 @@ const TaskComponent = ({ navigation }) => {
         }
     }
 
+    function undoTPcalculations(valueToAdd) {
+        TotalTP = TotalTP - valueToAdd;
+        battleTP = battleTP - valueToAdd;
+    }
+
 
     function PrintInt(IntValue) {
         Alert.alert(IntValue.toString());
@@ -549,9 +554,19 @@ const TaskComponent = ({ navigation }) => {
                         <TouchableOpacity style={styles.square} onPress={() => {
                             //notifyMessage("Completed!", item.key)
                             showMessage({
-                                message: "Task Completed!",
-                                description: item.key,
+                                message: "Task Completed: " + item.key,
+                                description: "Want to undo? Click here",
                                 type: "info",
+                                onPress: () => {
+                                    /* THIS FUNC/CB WILL BE CALLED AFTER MESSAGE PRESS */
+                                    toDoList.unshift(item)
+                                    var index = finishedList.indexOf(item);
+                                    if (index !== -1) {
+                                        finishedList.splice(index, 1)
+                                    }
+                                    undoTPcalculations(item.value);
+                                    setState(!state);
+                                },
                             });
                             finishedList.push(item)
                             var index = toDoList.indexOf(item);
@@ -559,7 +574,7 @@ const TaskComponent = ({ navigation }) => {
                                 toDoList.splice(index, 1)
                             }
                             doTPcalculations(item.value);
-                            //setState(!state);
+                            setState(!state);
                         }}></TouchableOpacity>
                         <Text style={styles.itemText}>{item.key}</Text>
                     </View>
