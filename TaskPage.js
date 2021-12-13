@@ -558,6 +558,7 @@ const TaskComponent = ({ navigation }) => {
                                 message: "Task Completed: " + item.key,
                                 description: "Want to undo? Click here",
                                 type: "info",
+                                duration: 4000,
                                 onPress: () => {
                                     /* THIS FUNC/CB WILL BE CALLED AFTER MESSAGE PRESS */
                                     toDoList.unshift(item)
